@@ -10,7 +10,13 @@ or he is done.
 #include <iostream>
 #include <string>
 
-void rock_paper_scissor() {
+/*
+* An inline variable in C++ is a variable that is declared
+* using an inline specifier. It is an exception to 
+* one definition having multiple definitions
+* across various translation units
+*/
+inline void rock_paper_scissor() {
 	std::string answer;
 	char input_1, input_2;
 		do {
@@ -62,8 +68,9 @@ otherwise, it is $10 or 10 percent of the total amount owed, whichever is
 larger. Your program should include a loop that lets the user repeat this
 calculation until the user says she or he is done.
 */
-void revolving_credit_account() {
-	int account_balance{}, bank_due{}, minimum_amount{};
+inline void revolving_credit_account() {
+	double account_balance, minimum_amount;
+	double bank_due;
 	std::string answer;
 	do {
 		std::cout << "A program to compute the interest due, total amount due, " <<
@@ -86,21 +93,21 @@ void revolving_credit_account() {
 *	else amount == (balance + percent) / 10.0
 * + do - while
 */
-		if (account_balance > 1000) {
-			bank_due = (account_balance - 1000) * 0.015 + 1000 * 0.01;
+		if (account_balance > 1000.0) {
+			bank_due = (account_balance - 1000.0) * 0.015 + 1000.0 * 0.01;
 		}
-		else if (account_balance <= 1000 &&
-			account_balance > 10) {
+		else if (account_balance <= 1000.0 &&
+			account_balance > 10.0) {
 			bank_due = account_balance * 0.01;
 		}
 		else {
-			bank_due = 0;
+			bank_due = 0.0;
 		}
-		if ((account_balance + bank_due) > 10) {
+		if ((account_balance + bank_due) > 10.0) {
 			minimum_amount = (account_balance + bank_due) / 10.0;
 		}
 		else {
-			minimum_amount = 10;
+			minimum_amount = 10.0;
 		}
 		std::cout << "Result:\n" <<
 			"Bank percent is " << bank_due << std::endl <<
@@ -131,7 +138,7 @@ Capricorn December 22–January 19
 Aquarius January 20–February 18
 Pisces February 19–March 20
 */
-void astrology_program() {
+inline void astrology_program() {
 	std::string answer, month;
 	int day;
 	do {
@@ -297,8 +304,69 @@ void astrology_program() {
 	} while (answer == "yes" || answer == "YES");
 }
 
-int main() {
-	rock_paper_scissor();
-	revolving_credit_account();
-	astrology_program();
+
+// PROJECT-LIKE PROGRAMS
+/*
+Write a program that computes the cost of a long-distance call. The cost of
+the call is determined according to the following rate schedule:
+a. Any call started between 8:00 am and 6:00 pm, Monday through Friday,
+is billed at a rate of $0.40 per minute.
+b. Any call starting before 8:00 am or after 6:00 pm, Monday through
+Friday, is charged at a rate of $0.25 per minute.
+c. Any call started on a Saturday or Sunday is charged at a rate of $0.15
+per minute.
+The input will consist of the day of the week, the time the call started, and
+the length of the call in minutes. The output will be the cost of the call. The
+time is to be input in 24-hour notation, so the time 1:30 pm is input as
+13:30
+The day of the week will be read as one of the following pairs of character
+values, which are stored in two variables of type char:
+Mo Tu We Th Fr Sa Su - WHAT THE FUCKING REASON FOR THIS WHY CANT I SIMPLY USE A STRING INSTEAD FUCK YOU
+i`ll use a string because i fuck the rules and the authors' moms
+Be sure to allow the user to use either uppercase or lowercase letters or a
+combination of the two. The number of minutes will be input as a value
+of type int. (You can assume that the user rounds the input to a whole
+number of minutes.) Your program should include a loop that lets the
+user repeat this calculation until the user says she or he is done.
+*/
+inline void call_cost() {
+	std::string answer, start_time, day;
+	int call_length, start_time_int;
+	double bill;
+	do {
+		std::cout << "This is a program that computes the cost of a long-distance call. " <<
+			"Do you wish to proceed? Enter yes or no: ";
+		std::cin >> answer;
+		if (answer == "no" || answer == "NO") {
+			std::cout << "No calls left.\n";
+			break;
+		}
+		std::cout << "Please enter the day of the week, the time the call started, and " <<
+			"the length of the call in minutes below.\n";
+		std::cin >> day >> start_time >> call_length;
+		start_time_int = int(start_time[0,1]);
+		if ((day == "Mo" || day == "mo" || day == "MO" ||
+			day == "Tu" || day == "tu" || day == "TU" ||
+			day == "We" || day == "we" || day == "WE" ||
+			day == "Th" || day == "th" || day == "TH" ||
+			day == "Fr" || day == "fr" || day == "FR") &&
+			(start_time_int > 8 && start_time_int < 18)) {
+			bill = call_length * 0.4;
+			std::cout << "Your bill is: " << bill << std::endl;
+		}
+		else if ((day == "Mo" || day == "mo" || day == "MO" ||
+			day == "Tu" || day == "tu" || day == "TU" ||
+			day == "We" || day == "we" || day == "WE" ||
+			day == "Th" || day == "th" || day == "TH" ||
+			day == "Fr" || day == "fr" || day == "FR") &&
+			(start_time_int < 8 || start_time_int > 18)) {
+			bill = call_length * 0.25;
+			std::cout << "Your bill is: " << bill << std::endl;
+		}
+		else if (day == "Sa" || day == "sa" || day == "SA" ||
+			day == "Su" || day == "su" || day == "SU") {
+			bill = call_length * 0.15;
+			std::cout << "Your bill is: " << bill << std::endl;
+		}
+	} while (answer == "yes" || answer == "YES");
 }
