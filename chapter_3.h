@@ -1,4 +1,4 @@
-// PRACTICE PROGRAMS
+﻿// PRACTICE PROGRAMS
 /*
 Write a program to score the paper-rock-scissor game. Each of two users
 types in either P, R, or S. The program then announces the winner as
@@ -119,24 +119,24 @@ inline void revolving_credit_account() {
 responds with the sign and horoscope for that birthday. The month may
 be entered as a number from 1 to 12. Then enhance your program so
 that if the birthday is only one or two days away from an adjacent sign,
-the program announces that the birthday is on a �cusp� and also outputs
+the program announces that the birthday is on a “cusp” and also outputs
 the horoscope for that nearest adjacent sign. This program will have a
 long multiway branch. Make up a horoscope for each sign. Your program
 should include a loop that lets the user repeat this calculation until the
 user says she or he is done.
 The horoscope signs and dates are:
-Aries March 21�April 19
-Taurus April 20�May 20
-Gemini May 21�June 21
-Cancer June 22�July 22
-Leo July 23�August 22
-Virgo August 23�September 22
-Libra September 23�October 22
-Scorpio October 23�November 21
-Sagittarius November 22�December 21
-Capricorn December 22�January 19
-Aquarius January 20�February 18
-Pisces February 19�March 20
+Aries March 21–April 19
+Taurus April 20–May 20
+Gemini May 21–June 21
+Cancer June 22–July 22
+Leo July 23–August 22
+Virgo August 23–September 22
+Libra September 23–October 22
+Scorpio October 23–November 21
+Sagittarius November 22–December 21
+Capricorn December 22–January 19
+Aquarius January 20–February 18
+Pisces February 19–March 20
 */
 inline void astrology_program() {
 	std::string answer, month;
@@ -370,3 +370,35 @@ inline void call_cost() {
 		}
 	} while (answer == "yes" || answer == "YES");
 }
+
+/*
+* Write a program that outputs the lyrics for the song “Ninety-Nine Bottles
+of Beer on the Wall.” Your program should print the number of bottles in
+English, not as a number. For example:
+Ninety-nine bottles of beer on the wall,
+Ninety-nine bottles of beer,
+Take one down, pass it around,
+Ninety-eight bottles of beer on the wall.
+…
+One bottle of beer on the wall,
+One bottle of beer,
+Take one down, pass it around,
+Zero bottles of beer on the wall.
+Design your program with a function that takes as an argument an integer
+between 0 and 99 and returns a string that contains the integer value in
+English. Your function should not have 100 different if-else statements!
+Instead, use % and / to extract the tens and ones digits to construct the English
+string. You may need to test specifically for values such as 0, 10–19, etc.
+*/
+
+/*
+* псевдокод: я можу це зробити через А) юзер інпут
+* б) подивитись остачу від ділення на 100,0 і прописати світч бо в мене 
+там якраз результат буде інт
+далі аналогічно але з 10
+і прописати шаблон типу (100) - (10) - далі текст
+але як прописати продовження пісні? через фор ?
+тоді треба буде ту схему зі % для 100 і 10 впхнути в шось типу 
+фор (інт і = юзер інпут,, і --> 0,, і--)
+але то вже завтра
+*/
