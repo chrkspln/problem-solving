@@ -6,5 +6,4 @@ int main() {
 	revolving_credit_account();
 	astrology_program();
 	call_cost();
-	beer_song();
 }
