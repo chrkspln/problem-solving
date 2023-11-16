@@ -402,3 +402,92 @@ string. You may need to test specifically for values such as 0, 10–19, etc.
 фор (інт і = юзер інпут,, і --> 0,, і--)
 але то вже завтра
 */
+
+inline void beer_song() {
+	int user_input;
+	std::string answer, tens, ones;
+	do {
+		std::cout << "a song about beer bottles! do you wish to proceed?\n" <<
+			"Enter yes or no: ";
+		std::cin >> answer;
+		if (answer == "no" || answer == "NO") {
+			std::cout << "No more beer for today.\n";
+			break;
+		}
+		std::cout << "Enter a number! ";
+		std::cin >> user_input;
+		while (user_input >= 0) {
+			if (user_input < 20) {
+				if (user_input == 0) {
+					std::cout << "Zero bottles of beer on the wall.";
+					break;
+
+				}
+			}
+			switch (int(user_input % 100)) {
+			case 2:
+				tens = "Twenty";
+				break;
+			case 3:
+				tens = "Thirty";
+				break;
+			case 4:
+				tens = "Fourty";
+				break;
+			case 5:
+				tens = "Fifty";
+				break;
+			case 6:
+				tens = "Sixty";
+				break;
+			case 7:
+				tens = "Seventy";
+				break;
+			case 8:
+				tens = "Eighty";
+				break;
+			case 9:
+				tens = "Ninety";
+				break;
+			default:
+				break;
+			}
+			switch (int(user_input % 10)) {
+			case 1:
+				ones = "one";
+				break;
+			case 2:
+				ones = "two";
+				break;
+			case 3:
+				ones = "three";
+				break;
+			case 4:
+				ones = "four";
+				break;
+			case 5:
+				ones = "five";
+				break;
+			case 6:
+				ones = "six";
+				break;
+			case 7:
+				ones = "seven";
+				break;
+			case 8:
+				ones = "eight";
+				break;
+			case 9:
+				ones = "nine";
+				break;
+			default:
+				break;
+			}
+			std::cout << tens << '-' << ones << " bottles of beer on the wall,\n" <<
+				tens << '-' << ones << " bottles of beer,\n" <<
+				"Take one down, pass it around,\n";
+			user_input--;
+		}
+	}
+	while (answer == "yes" || answer == "YES");
+}
